@@ -1,3 +1,9 @@
 .login-form {
     width: 40%;
 }
+
+.login-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

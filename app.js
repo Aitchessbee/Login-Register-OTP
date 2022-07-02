@@ -5,7 +5,7 @@ const User = require('./models/userModel.js');
 
 const app = express();
 
-const dbURI = "mongodb+srv://HSB:test1234@cluster0.7ztm4s7.mongodb.net/?retryWrites=true&w=majority"
+const dbURI = "mongodb+srv://HSB:test1234@cluster0.7ztm4s7.mongodb.net/HPC?retryWrites=true&w=majority"
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => app.listen(3000))
     .catch((err) => console.log(err));
@@ -26,12 +26,31 @@ app.get("/login", (req, res) => {
     res.render('login');
 })
 
-app.post("/login", (req, res) => {
+app.get('/register', (req, res) => {
+    res.render('register');
+})
+
+app.post('/register', (req, res) => {
     const user = new User(req.body);
 
     user.save()
         .then(result => {
+            app.render('loggedIn');
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
+
+app.post("/login", (req, res) => {
+    const user = new User(req.body);
+
+    User.findOne({email: user.email})
+        .then(result => {
             console.log(result);
+            if(result.password === user.password){
+                app.render('loggedIn');
+            }
         })
         .catch(err => {
             console.log(err);
