@@ -1,7 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const encrypt = require('mongoose-encryption');
 
 const userSchema = new Schema({
+    username: {
+        type: String,
+        require: true
+    },
+    mobile: {
+        type: String,
+        require: true
+    },
     email: {
         type: String,
         require: true
@@ -11,6 +20,10 @@ const userSchema = new Schema({
         require: true
     }
 })
+
+const secret = "virtualtradingwebappsecret.";
+
+userSchema.plugin(encrypt, {secret: secret, encryptedFields:['password']});
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

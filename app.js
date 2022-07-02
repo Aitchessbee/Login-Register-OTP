@@ -35,7 +35,7 @@ app.post('/register', (req, res) => {
 
     user.save()
         .then(result => {
-            app.render('loggedIn');
+            res.render('loggedIn');
         })
         .catch(err => {
             console.log(err);
@@ -49,7 +49,7 @@ app.post("/login", (req, res) => {
         .then(result => {
             console.log(result);
             if(result.password === user.password){
-                app.render('loggedIn');
+                res.render('loggedIn');
             }
         })
         .catch(err => {
