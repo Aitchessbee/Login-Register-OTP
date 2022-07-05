@@ -9,7 +9,7 @@ const app = express();
 
 const dbURI = "mongodb+srv://HSB:test1234@cluster0.7ztm4s7.mongodb.net/HPC?retryWrites=true&w=majority"
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then((result) => app.listen(3000||process.env.PORT))
+    .then((result) => app.listen(process.env.PORT || 3000))
     .catch((err) => console.log(err));
 
 app.set('view engine', 'ejs');
