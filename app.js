@@ -34,7 +34,7 @@ app.get('/register', (req, res) => {
 })
 
 app.get("/mail", async function(req, res) {
-     
+    
     function generateOTP() {
                 
         // Declare a digits variable 
@@ -68,7 +68,7 @@ app.get("/mail", async function(req, res) {
     console.log(info.response);
     console.log(nodemailer.getTestMessageUrl(info));
     
-
+    // res.end();
     res.json({
         message: "ok",
         otp: otp,
