@@ -36,44 +36,16 @@ app.get('/register', (req, res) => {
 app.get("/mail", async function(req, res) {
      
     // NODEMAILER LOGIC
-    // const transporter = nodemailer.createTransport({
-    //     service: "gmail",
-    //     auth: {
-    //         user: "hsbthegreat57@gmail.com",
-    //         pass: "aitchessbee"
-    //     }
-    // });
-
-    let testAccount = await nodemailer.createTestAccount();
-
-  // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        host: "smtp.ethereal.email",
-        port: 587,
-        secure: false, // true for 465, false for other ports
+    const transporter = nodemailer.createTransport({
+        service: "hotmail",
         auth: {
-            user: testAccount.user, // generated ethereal user
-            pass: testAccount.pass, // generated ethereal password
-        },
+            user: "hsbthegreat@outlook.com",
+            pass: "Aitchessbee1"
+        }
     });
-    
-    // const options = {
-    //     from: "hsbthegreat57@gmail.com",
-    //     to: "bediharsiddak@gmail.com",
-    //     subject: "Sending email with node.js!",
-    //     text: "wow! That's simple"
-    // };
-
-    // await transporter.sendMail(options, (err, info) => {
-    //     if(err){
-    //         console.log(err);
-    //     }else {
-    //         console.log(info.response);
-    //     }
-    // })
 
     let info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
+        from: 'hsbthegreat@outlook.com', // sender address
         to: "bediharsiddak@gmail.com", // list of receivers
         subject: "Hello ✔", // Subject line
         text: "Hello world?", // plain text body
