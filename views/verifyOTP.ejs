@@ -3,7 +3,7 @@
 <%- include('./partials/head.ejs') %>
 
 <body>
-    <form class="login-form my-5 max-auto border p-5 rounded" action="">
+    <form class="login-form my-5 mx-auto border p-5 rounded" action="">
         <h1 class="text-center">Verify OTP</h1>
         <!-- <div class="form-group">
             <label for="username">Username</label>
@@ -22,14 +22,17 @@
             </div>
         </div>
         
-        <div onclick="verifyMail()" class="btn btn-dark">Check otp</d>
+        <div onclick="verifyMail()" class="btn btn-dark check-otp">Check otp</div>
 
     </form>
+
+    <h1 class="verifiedtext text-danger">OTP verified</h1>
 
     <script>
         function verifyMail(){
             if(document.getElementById("emailOTP").value == '<%= otp %>'){
                 console.log("OTP verified");
+                document.getElementsByClassName("verifiedtext")[0].style.display = "block";
                 // location.href("");
             }else {
                 console.log('<%= otp %>')

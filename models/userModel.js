@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 const encrypt = require('mongoose-encryption');
 
 const userSchema = new Schema({
-    username: {
-        type: String,
-        require: true
-    },
     mobile: {
         type: String,
         require: true
