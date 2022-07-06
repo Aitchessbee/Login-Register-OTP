@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended: true}))
 
 
 app.get("/", (req, res) => {
-    res.render('index');
+    res.redirect('/login');
 })
 
 app.get("/login", (req, res) => {
@@ -33,8 +33,8 @@ app.get('/register', (req, res) => {
     res.render('register');
 })
 
-app.get("/mail", async function(req, res) {
-    
+app.post("/mail", async function(req, res) {
+    console.log(req.body)
     function generateOTP() {
                 
         // Declare a digits variable 
@@ -70,9 +70,12 @@ app.get("/mail", async function(req, res) {
     
     // res.end();
     res.json({
+
         message: "ok",
         otp: otp,
     })
+
+    res.render("register", {email: req.body.email, mobile: req.body.mobile, password: req.body.password, otp: otp});
 })
 
 

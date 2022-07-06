@@ -3,14 +3,44 @@
     <%- include('./partials/head.ejs') %>
 
     <body>
-        <%- include('./partials/nav.ejs') %>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">LOGO</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li> -->
+        
+                </ul>
+                <div>
+                    <!-- <a href="/login" class="btn btn-primary mr-2">Login</a>
+                    <a href="/register" class="btn btn-primary">Register</a> -->
+                    <a href="/login" class="btn btn-primary">Login</a>
+                </div>
+            </div>
+        </nav>
 
         <form class="login-form my-5 mx-auto border p-5 rounded" action="/register" method="POST">
-            <h1>Register</h1>
-            <div class="form-group">
-                <label for="username">Email address</label>
+            <h1 class="text-center">Register</h1>
+            <!-- <div class="form-group">
+                <label for="username">Username</label>
                 <input type="text" class="form-control w-75" id="username" placeholder="Enter username" name="username" />
-            </div>
+            </div> -->
             <div class="form-group">
                 <label for="mobile">Mobile</label>
                 <div class="otp-flex">
@@ -44,7 +74,7 @@
             </div> -->
             <div class="login-buttons">
                 <button type="submit" value="submit" class="btn btn-dark">Submit</button>
-                <a href="/login" class="text-danger">Login</a>
+                <!-- <a href="/login" class="text-danger">Login</a> -->
             </div>
         </form>
         <script
@@ -60,19 +90,19 @@
         <script src="../js/otp.js"></script>
         <script>
             console.log("register.ejs");
-            const buttons = document.getElementsByClassName("send-otp");
+            // const buttons = document.getElementsByClassName("send-otp");
 
-            function otp(e) {
-                e.target.parentElement.nextSibling.nextSibling.style.display = "block";
-            }
+            // function otp(e) {
+            //     e.target.parentElement.nextSibling.nextSibling.style.display = "block";
+            // }
             
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].addEventListener("click", otp);
-            }
+            // for (let i = 0; i < buttons.length; i++) {
+            //     buttons[i].addEventListener("click", otp);
+            // }
 
             function mailOTP() {
                 const form = document.getElementsByClassName("login-form")[0];
-                form.method = "GET";
+                form.method = "POST";
                 form.action = "/mail";
                 form.submit();
             }
