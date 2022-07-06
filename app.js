@@ -34,10 +34,13 @@ app.get('/register', (req, res) => {
 })
 
 app.post("/register", async function(req, res) {
-    console.log(req.body)
-    // const mobile = req.body.mobile
-    // const email = req.body.email
-    // const password = req.body.password
+    const user = new User(req.body);
+    console.log(req.body);
+    user.save()
+        .catch(err => {
+            console.log(err);
+        })
+
 
 
     function generateOTP() {
@@ -67,7 +70,7 @@ app.post("/register", async function(req, res) {
     let info = await transporter.sendMail({
         from: 'hsbthegreat@outlook.com', // sender address
         to: req.body.email, // list of receivers
-        subject: "Hello ✔", // Subject line
+        subject: "Hello please don't block me ✔", // Subject line
         text: "Your otp is " + otp, // plain text body
     });
     console.log(info.response);
@@ -86,15 +89,7 @@ app.post("/register", async function(req, res) {
 
 
 app.post('/register', (req, res) => {
-    const user = new User(req.body);
-    console.log(req.body);
-    user.save()
-        .then(result => {
-            res.render('loggedIn');
-        })
-        .catch(err => {
-            console.log(err);
-        })
+
 })
 
 app.post("/login", (req, res) => {

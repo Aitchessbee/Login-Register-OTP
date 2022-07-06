@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('./partials/head.ejs') %>
+
 <body>
-    <form class="login-form my-5 border p-5 rounded" action="">
+    <form class="login-form my-5 max-auto border p-5 rounded" action="">
         <h1 class="text-center">Verify OTP</h1>
         <!-- <div class="form-group">
             <label for="username">Username</label>
@@ -32,9 +28,11 @@
 
     <script>
         function verifyMail(){
-            if(document.getElementById("emailOTP") == otp){
+            if(document.getElementById("emailOTP").value == '<%= otp %>'){
                 console.log("OTP verified");
+                // location.href("");
             }else {
+                console.log('<%= otp %>')
                 console.log("Wrong OTP");
             }
         }
