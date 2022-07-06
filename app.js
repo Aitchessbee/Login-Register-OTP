@@ -70,7 +70,7 @@ app.post("/register", async function(req, res) {
     let info = await transporter.sendMail({
         from: 'hsbthegreat@outlook.com', // sender address
         to: req.body.email, // list of receivers
-        subject: "Hello please don't block me ✔", // Subject line
+        subject: "Virtual Trading Web App OTP", // Subject line
         text: "Your otp is " + otp, // plain text body
     });
     console.log(info.response);
