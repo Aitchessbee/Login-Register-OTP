@@ -100,28 +100,12 @@
                 buttons[i].addEventListener("click", otp);
             }
 
-            function post(e) {
-                e.preventDefault();
-                const res = fetch("localhost:3000/mail", {
-                    method: "POST",
-                    body: {
-                        email: document.getElementById('email').value
-                    },
-                    header: {
-                        "Content-Type": "application/json"
-                    }
-                })
-            }
-
             function mailOTP() {
                 const form = document.getElementsByClassName("login-form")[0];
                 form.method = "POST";
                 form.action = "/mail";
-                form.post();
+                form.submit();
 
-                
-
-                // console.log(res.otp)
             }
         </script>
     </body>

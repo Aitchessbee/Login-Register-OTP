@@ -33,11 +33,11 @@ app.get('/register', (req, res) => {
     res.render('register');
 })
 
-app.post("/mail", async function(req, res) {
+app.post("/register", async function(req, res) {
     console.log(req.body)
-    const mobile = req.body.mobile
-    const email = req.body.email
-    const password = req.body.password
+    // const mobile = req.body.mobile
+    // const email = req.body.email
+    // const password = req.body.password
 
 
     function generateOTP() {
@@ -66,7 +66,7 @@ app.post("/mail", async function(req, res) {
 
     let info = await transporter.sendMail({
         from: 'hsbthegreat@outlook.com', // sender address
-        to: "bediharsiddak@gmail.com", // list of receivers
+        to: req.body.email, // list of receivers
         subject: "Hello ✔", // Subject line
         text: "Your otp is " + otp, // plain text body
     });
@@ -80,8 +80,8 @@ app.post("/mail", async function(req, res) {
     //     otp: otp,
     // })
 
-    // res.render("register", {mobile: mobile, email: email, password: password});
-    res.json({otp: otp});
+    res.render("verifyOTP", {otp: otp});
+
 })
 
 

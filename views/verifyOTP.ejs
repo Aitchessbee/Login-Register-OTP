@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form class="login-form my-5 border p-5 rounded" action="">
+        <h1 class="text-center">Verify OTP</h1>
+        <!-- <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control w-75" id="username" placeholder="Enter username" name="username" />
+        </div> -->
+        <div class="form-group">
+            <label for="mobile">Mobile OTP</label>
+            <div class="otp-flex">
+                <input type="text" class="form-control w-75" id="mobileOTP" placeholder="Enter OTP" name="mobileOTP" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email OTP</label>
+            <div class="otp-flex">
+                <input type="email" class="form-control w-75" id="emailOTP" placeholder="Enter OTP" name="emailOTP" />
+            </div>
+        </div>
+        
+        <div onclick="verifyMail()" class="btn btn-dark">Check otp</d>
+
+    </form>
+
+    <script>
+        function verifyMail(){
+            if(document.getElementById("emailOTP") == otp){
+                console.log("OTP verified");
+            }else {
+                console.log("Wrong OTP");
+            }
+        }
+    </script>
+</body>
+</html>
