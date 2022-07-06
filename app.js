@@ -35,6 +35,11 @@ app.get('/register', (req, res) => {
 
 app.post("/mail", async function(req, res) {
     console.log(req.body)
+    const mobile = req.body.mobile
+    const email = req.body.email
+    const password = req.body.password
+
+
     function generateOTP() {
                 
         // Declare a digits variable 
@@ -69,13 +74,14 @@ app.post("/mail", async function(req, res) {
     console.log(nodemailer.getTestMessageUrl(info));
     
     // res.end();
-    res.json({
+    // res.json({
 
-        message: "ok",
-        otp: otp,
-    })
+    //     message: "ok",
+    //     otp: otp,
+    // })
 
-    res.render("register", {email: req.body.email, mobile: req.body.mobile, password: req.body.password, otp: otp});
+    // res.render("register", {mobile: mobile, email: email, password: password});
+    res.json({otp: otp});
 })
 
 

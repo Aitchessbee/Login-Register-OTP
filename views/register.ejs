@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="form-group">
-                <label for="email">Email address</label>
+                <label for="email">Email ID</label>
                 <div class="otp-flex">
                     <input type="email" class="form-control w-75" id="email" placeholder="Enter email" name="email" />
                     <div class="send-otp" onclick="mailOTP()">Send OTP</div>
@@ -90,21 +90,38 @@
         <script src="../js/otp.js"></script>
         <script>
             console.log("register.ejs");
-            // const buttons = document.getElementsByClassName("send-otp");
+            const buttons = document.getElementsByClassName("send-otp");
 
-            // function otp(e) {
-            //     e.target.parentElement.nextSibling.nextSibling.style.display = "block";
-            // }
+            function otp(e) {
+                e.target.parentElement.nextSibling.nextSibling.style.display = "block";
+            }
             
-            // for (let i = 0; i < buttons.length; i++) {
-            //     buttons[i].addEventListener("click", otp);
-            // }
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", otp);
+            }
+
+            function post(e) {
+                e.preventDefault();
+                const res = fetch("localhost:3000/mail", {
+                    method: "POST",
+                    body: {
+                        email: document.getElementById('email').value
+                    },
+                    header: {
+                        "Content-Type": "application/json"
+                    }
+                })
+            }
 
             function mailOTP() {
                 const form = document.getElementsByClassName("login-form")[0];
                 form.method = "POST";
                 form.action = "/mail";
-                form.submit();
+                form.post();
+
+                
+
+                // console.log(res.otp)
             }
         </script>
     </body>
