@@ -99,12 +99,16 @@ app.post("/login", (req, res) => {
 
     User.findOne({email: user.email})
         .then(result => {
-            console.log(result);
+            // console.log(result);
             if(result.password === user.password){
                 res.render('loggedIn');
+            }else {
+                res.render('login', {errorText: "Invalid Email ID or Password"});
             }
         })
         .catch(err => {
-            console.log(err);
+            console.log("User not found")
+            res.render('login', {errorText: "Invalid Email ID or Password"});
+            // console.log(err);
         })
 })

@@ -58,29 +58,38 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script>
-          function loginSubmit() {
-              console.log("submit function run")
-              let error = "";
-              let inputs = document.getElementsByTagName("input")
-              for(var i = 0; i < inputs.length; i++) {
-                  if(inputs[i].value === ""){
-                      inputs[i].style.borderColor = "red";
-                      error = "*Please fill all the fields."
-                      document.getElementsByClassName("errorDiv")[0].textContent = error;
-                  }else{
-                      inputs[i].style.borderColor = "#dddddd";
-                    
-                  }
-              }
+            try {
+                console.log("trying");
+                document.getElementsByClassName("errorDiv")[0].textContent = '<%= errorText %>';
+            }
+            catch(err) {
+                console.log(err);
+            }
 
-              if(error == ""){
-                  // console.log(document.getElementsByClassName("login-form")[0]);
-                  document.getElementsByClassName("login-form")[0].submit();
+         
+            function loginSubmit() {
+                console.log("submit function run")
+                let error = "";
+                let inputs = document.getElementsByTagName("input")
+                for(var i = 0; i < inputs.length; i++) {
+                    if(inputs[i].value === ""){
+                        inputs[i].style.borderColor = "red";
+                        error = "*Please fill all the fields."
+                        document.getElementsByClassName("errorDiv")[0].textContent = error;
+                    }else{
+                        inputs[i].style.borderColor = "#dddddd";
+                        
+                    }
+                }
 
-              }else {
-                  console.log(error);
-              }
-          }
+                if(error == ""){
+                    // console.log(document.getElementsByClassName("login-form")[0]);
+                    document.getElementsByClassName("login-form")[0].submit();
+
+                }else {
+                    console.log(error);
+                }
+            }
         </script>
     </body>
 </html>
