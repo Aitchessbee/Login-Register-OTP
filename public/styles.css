@@ -34,3 +34,8 @@
 .verifiedtext {
     display: none;
 }
+
+.logo {
+    height: 40px;
+    /* object-fit: cover; */
+}

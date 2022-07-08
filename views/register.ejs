@@ -4,7 +4,9 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">LOGO</a>
+            <!-- <a class="navbar-brand" href="#">LOGO</a> -->
+            <a href="#"><img src="/logo.png" alt="" class="logo"></a>
+
             <button
                 class="navbar-toggler"
                 type="button"
@@ -65,7 +67,7 @@
                 <div onclick="registerSubmit()" class="btn btn-dark">Register</div>
                 <!-- <a href="/login" class="text-danger">Login</a> -->
             </div>
-            <div class="errorDiv"></div>
+            <div class="errorDiv text-danger"></div>
         </form>
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -77,7 +79,6 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"
         ></script>
-        <script src="../js/otp.js"></script>
         <script>
             // console.log("register.ejs");
             // const buttons = document.getElementsByClassName("send-otp");
@@ -105,10 +106,10 @@
                 for(var i = 0; i < inputs.length; i++) {
                     if(inputs[i].value === ""){
                         inputs[i].style.borderColor = "red";
-                        error = "Please fill all the fields."
+                        error = "*Please fill all the fields."
+                        document.getElementsByClassName("errorDiv")[0].textContent = error;
                     }else{
                         inputs[i].style.borderColor = "#dddddd";
-                        
                     }
                 }
 

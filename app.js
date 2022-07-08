@@ -2,10 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const User = require('./models/userModel.js');
 const nodemailer = require('nodemailer');
+const favicon = require('serve-favicon');
+const path = require('path');
 
 console.log("app.js");
 
 const app = express();
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const dbURI = "mongodb+srv://HSB:test1234@cluster0.7ztm4s7.mongodb.net/HPC?retryWrites=true&w=majority"
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -13,7 +16,6 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .catch((err) => console.log(err));
 
 app.set('view engine', 'ejs');
-
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}))
 // app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
