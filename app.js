@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-    res.render('login');
+    res.render('login', {errorText: ""});
 })
 
 app.get('/register', (req, res) => {
@@ -107,7 +107,7 @@ app.post("/login", (req, res) => {
             }
         })
         .catch(err => {
-            console.log("User not found")
+            // console.log("User not found")
             res.render('login', {errorText: "Invalid Email ID or Password"});
             // console.log(err);
         })
