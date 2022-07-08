@@ -18,14 +18,14 @@
             </button>
         
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mx-auto">
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li> -->
-        
+                    <li class="text-light h4">Virtual Trading App</li>
                 </ul>
                 <div>
                     <!-- <a href="/login" class="btn btn-primary mr-2">Login</a>
@@ -42,29 +42,30 @@
                 <input type="text" class="form-control w-75" id="username" placeholder="Enter username" name="username" />
             </div> -->
             <div class="form-group">
-                <label for="mobile">Mobile</label>
+                <label for="mobile">Mobile No.</label>
                 <div class="otp-flex">
-                    <input type="text" class="form-control w-75" id="mobile" placeholder="Enter mobile no." name="mobile" />
+                    <input type="text" class="form-control" id="mobile" placeholder="Enter mobile no." name="mobile" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="email">Email ID</label>
                 <div class="otp-flex">
-                    <input type="email" class="form-control w-75" id="email" placeholder="Enter email" name="email" />
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email ID" name="email" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control w-75" id="password" placeholder="Password" name="password" />
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" />
             </div>
             <!-- <div class="form-check mb-2">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Remember Me</label>
             </div> -->
             <div class="login-buttons">
-                <button type="submit" value="submit" class="btn btn-dark">Submit</button>
+                <div onclick="registerSubmit()" class="btn btn-dark">Register</div>
                 <!-- <a href="/login" class="text-danger">Login</a> -->
             </div>
+            <div class="errorDiv"></div>
         </form>
         <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -78,16 +79,16 @@
         ></script>
         <script src="../js/otp.js"></script>
         <script>
-            console.log("register.ejs");
-            const buttons = document.getElementsByClassName("send-otp");
+            // console.log("register.ejs");
+            // const buttons = document.getElementsByClassName("send-otp");
 
-            function otp(e) {
-                e.target.parentElement.nextSibling.nextSibling.style.display = "block";
-            }
+            // function otp(e) {
+            //     e.target.parentElement.nextSibling.nextSibling.style.display = "block";
+            // }
             
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].addEventListener("click", otp);
-            }
+            // for (let i = 0; i < buttons.length; i++) {
+            //     buttons[i].addEventListener("click", otp);
+            // }
 
             // function mailOTP() {
             //     const form = document.getElementsByClassName("login-form")[0];
@@ -96,6 +97,29 @@
             //     form.submit();
 
             // }
+
+            function registerSubmit() {
+                console.log("submit function run")
+                let error = "";
+                let inputs = document.getElementsByTagName("input")
+                for(var i = 0; i < inputs.length; i++) {
+                    if(inputs[i].value === ""){
+                        inputs[i].style.borderColor = "red";
+                        error = "Please fill all the fields."
+                    }else{
+                        inputs[i].style.borderColor = "#dddddd";
+                        
+                    }
+                }
+
+                if(error == ""){
+                    // console.log(document.getElementsByClassName("login-form")[0]);
+                    document.getElementsByClassName("login-form")[0].submit();
+
+                }else {
+                    console.log(error);
+                }
+            }
         </script>
     </body>
 </html>

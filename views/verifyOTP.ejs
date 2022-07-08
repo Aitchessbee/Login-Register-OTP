@@ -3,6 +3,37 @@
 <%- include('./partials/head.ejs') %>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">LOGO</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li> -->
+                <li class="text-light h4">Virtual Trading App</li>
+            </ul>
+            <div>
+                <!-- <a href="/login" class="btn btn-primary mr-2">Login</a>
+                <a href="/register" class="btn btn-primary">Register</a> -->
+                <a href="/login" class="btn btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
     <form class="login-form my-5 mx-auto border p-5 rounded" action="">
         <h1 class="text-center">Verify OTP</h1>
         <!-- <div class="form-group">
@@ -12,18 +43,20 @@
         <div class="form-group">
             <label for="mobile">Mobile OTP</label>
             <div class="otp-flex">
-                <input type="text" class="form-control w-75" id="mobileOTP" placeholder="Enter OTP" name="mobileOTP" />
+                <input type="text" class="form-control" id="mobileOTP" placeholder="Enter Mobile OTP" name="mobileOTP" />
             </div>
         </div>
         <div class="form-group">
             <label for="email">Email OTP</label>
             <div class="otp-flex">
-                <input type="email" class="form-control w-75" id="emailOTP" placeholder="Enter OTP" name="emailOTP" />
+                <input type="email" class="form-control" id="emailOTP" placeholder="Enter Email OTP" name="emailOTP" />
             </div>
         </div>
         
-        <div onclick="verifyMail()" class="btn btn-dark check-otp">Check otp</div>
-
+        <div class="login-buttons">
+            <div onclick="verifyMail()" class="btn btn-dark check-otp">Verify OTP</div>
+        </div>
+        
     </form>
 
     <h1 class="verifiedtext text-danger">OTP verified</h1>
