@@ -8,6 +8,8 @@ const path = require('path');
 console.log("app.js");
 
 const app = express();
+app.use(express.json())
+
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 const dbURI = "mongodb+srv://HSB:test1234@cluster0.7ztm4s7.mongodb.net/HPC?retryWrites=true&w=majority"
@@ -43,8 +45,12 @@ app.post("/register", async function(req, res) {
             console.log(err);
         })
 
+    res.render("/login");
+
+})
 
 
+app.post("/sendotp", (req, res) => {
     function generateOTP() {
                 
         // Declare a digits variable 
@@ -77,21 +83,6 @@ app.post("/register", async function(req, res) {
     });
     console.log(info.response);
     console.log(nodemailer.getTestMessageUrl(info));
-    
-    // res.end();
-    // res.json({
-
-    //     message: "ok",
-    //     otp: otp,
-    // })
-
-    res.render("verifyOTP", {otp: otp});
-
-})
-
-
-app.post('/register', (req, res) => {
-
 })
 
 app.post("/login", (req, res) => {
