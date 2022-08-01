@@ -37,7 +37,7 @@ app.get('/register', (req, res) => {
     res.render('register');
 })
 
-app.post("/register", async function(req, res) {
+app.post("/register", function(req, res) {
     const user = new User(req.body);
     console.log(req.body);
     user.save()
@@ -50,7 +50,7 @@ app.post("/register", async function(req, res) {
 })
 
 
-app.post("/sendotp", (req, res) => {
+app.post("/sendotp", async (req, res) => {
     function generateOTP() {
                 
         // Declare a digits variable 
@@ -83,6 +83,8 @@ app.post("/sendotp", (req, res) => {
     });
     console.log(info.response);
     console.log(nodemailer.getTestMessageUrl(info));
+
+    res.send(JSON.stringify({otp: otp}));
 })
 
 app.post("/login", (req, res) => {

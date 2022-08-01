@@ -26,10 +26,10 @@
     justify-content: space-between;
 }
 
-/* .otp-items {
+.otp-items {
     display: none;
     margin-top: 10px;
-} */
+}
 
 .verifiedtext {
     display: none;
@@ -38,4 +38,8 @@
 .logo {
     height: 40px;
     /* object-fit: cover; */
+}
+
+#mail-checkMark {
+    display: none;
 }
