@@ -4,33 +4,65 @@ let emailVerified = false;
 function mailOtp(e){
     e.preventDefault();
 
-    e.target.parentElement.nextSibling.nextSibling.style.display = "block";
+    let email = document.getElementById("email-box").value;
 
-    fetch("/sendotp", {
-        method: "POST",
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify({
-            email: document.getElementById("email-box").value
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (email.match(validRegex)) {
+        document.getElementById("email-box").style.borderColor = "#dddddd";
+        document.getElementsByClassName("errorDiv")[0].textContent = "";
+
+        e.target.parentElement.nextSibling.nextSibling.style.display = "block";
+
+        fetch("/sendotp", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+            body: JSON.stringify({
+                email: email,
+            })
         })
-    })
-    .then((response) => {
-        if(response.ok) {
-            return response.json();
-        }
-    })
-    .then((data) => {
-        emailOtp = data.otp;
-        console.log(data);
-        return data;
-    })
-}
+        .then((response) => {
+            if(response.ok) {
+                return response.json();
+            }
+        })
+        .then((data) => {
+            emailOtp = data.otp;
+            console.log(data);
+            return data;
+        })
+    } else {
+        document.getElementsByClassName("errorDiv")[0].textContent = "Invalid Email ID";
+        document.getElementById("email-box").style.borderColor = "red";
+    }
+  
+  }
+
+    
 
 function mobileOtp(e){
     e.preventDefault();
-    e.target.parentElement.nextSibling.nextSibling.style.display = "block";
+
+    let mobile = document.getElementById("mobile-box").value;
+
+    var validRegex = /^\d{10}$/;
+
+    if (mobile.match(validRegex)) {
+        document.getElementById("mobile-box").style.borderColor = "#dddddd";
+        document.getElementsByClassName("errorDiv")[0].textContent = "";
+
+        e.target.parentElement.nextSibling.nextSibling.style.display = "block";
+
+        
+    } else {
+        document.getElementsByClassName("errorDiv")[0].textContent = "Invalid Mobile No.";
+        document.getElementById("mobile-box").style.borderColor = "red";
+    }
+  
 }
+
 
 
 
@@ -44,13 +76,17 @@ function checkMailOtp(e) {
     e.preventDefault();
     console.log(document.getElementById("email-otp-box").value)
     if(document.getElementById("email-otp-box").value == emailOtp){
+        document.getElementById("email-otp-box").style.borderColor = "#dddddd";
+        document.getElementsByClassName("errorDiv")[0].textContent = "";
+
         console.log("otp verified");
         emailVerified = true;
         e.target.parentElement.style.display = "none";
         mailOtpBtn.style.display = "none";
         document.getElementById("mail-checkMark").style.display = "block"
     }else {
-        console.log("wrong otp");
+        document.getElementById("email-otp-box").style.borderColor = "red";
+        document.getElementsByClassName("errorDiv")[0].textContent = "Wrong OTP";
     }
 }
 
